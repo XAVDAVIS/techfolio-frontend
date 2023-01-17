@@ -8,12 +8,12 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
-  <Router>
-    <React.StrictMode>
+  <React.StrictMode>
+    <Router>
       <App />
-    </React.StrictMode>
-  </Router>,
-  document.getElementById("root")
+    </Router>,
+    document.getElementById("root")
+  </React.StrictMode>
 );
 
 
