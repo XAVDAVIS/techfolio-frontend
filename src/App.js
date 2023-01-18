@@ -11,7 +11,6 @@ function App() {
       <Header user={user} />
       <Main user={user} setUser={setUser}/>
       <Footer />
-      
     </div>
   );
 }
