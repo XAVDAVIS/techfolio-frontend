@@ -87,7 +87,7 @@ function Main(props){
       />
       <Route 
         path='/explore'
-        element={<Explore />}
+        element={<div className="portfolioDisplay"><Explore portfolio={portfolio}/></div>}
       />
       <Route 
         path='/login'
