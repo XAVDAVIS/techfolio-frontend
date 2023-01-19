@@ -9,6 +9,7 @@ import Show from "../pages/Show";
 import Edit from "../pages/Edit";
 
 function Main(props){
+  const [user, setUser] = useState(null)
   const [portfolio, setPortfolio] = useState(null)
   const PORTFOLIO_URL = 'http://localhost:4000/portfolio/'
   const USER_URL = 'http://localhost:4000/user/'
@@ -17,7 +18,7 @@ function Main(props){
   const getUser = async () => {
     const response = await fetch(USER_URL);
     const data = await response.json();
-    props.setUser(data);
+    setUser(data);
   };
   const getPortfolio = async () => {
     const response = await fetch(PORTFOLIO_URL);

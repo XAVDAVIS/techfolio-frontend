@@ -29,7 +29,7 @@ function Header(props){
        </div>
        : (
         <Link to='/login' className="link">
-        <li>log in</li>
+        <li>Log in</li>
       </Link>
       )}
       <Link to='/registration' className="link">
