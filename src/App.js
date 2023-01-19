@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 
+
 function App() {
   const [user, setUser] = useState(null)
   return (
@@ -11,7 +12,6 @@ function App() {
       <Header user={user} />
       <Main user={user} setUser={setUser}/>
       <Footer />
-      
     </div>
   );
 }
