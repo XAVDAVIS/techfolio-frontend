@@ -2,10 +2,23 @@ import { Route, Routes } from "react-router-dom";
 import Explore from "../pages/Explore";
 import { useEffect, useState } from "react";
 
-function Main(props) {
-	//Creating state for portfolio
-	const [portfolio, setPortfolio] = useState(null);
-	const url = "http://localhost:4000/portfolio/";
+function Main(props){
+  const [user, setUser] = useState(null)
+  const [portfolio, setPortfolio] = useState(null)
+  const PORTFOLIO_URL = 'http://localhost:4000/portfolio/'
+  const USER_URL = 'http://localhost:4000/user/'
+  
+  //GET
+  const getUser = async () => {
+    const response = await fetch(USER_URL);
+    const data = await response.json();
+    setUser(data);
+  };
+  const getPortfolio = async () => {
+    const response = await fetch(PORTFOLIO_URL);
+    const data = await response.json();
+    setPortfolio(data);
+  };
 
 	const getPortfolio = async () => {
 		const response = await fetch(url);
