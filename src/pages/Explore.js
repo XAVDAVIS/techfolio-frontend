@@ -3,12 +3,14 @@ import 'bulma/css/bulma.min.css'
 import {Card, Media, Content, Heading} from "react-bulma-components"
 
 function Explore({portfolio}) {
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 98bffc9 (updating schemas)
 	const Loaded = () => {
 		return portfolio.map((port)=> (
-      <div className="portfolioCard">
-      <Card key={port._id}>
+      <Card key={port._id} className="portfolioCard">
         <Card.Image size='5by3'
       src={port.screenShots} alt="my project should be here" />
       <Card.Content>
@@ -34,8 +36,6 @@ function Explore({portfolio}) {
       
       </Card.Content>
       </Card>
-      </div>
-
     ))
   }
 
