@@ -1,6 +1,9 @@
 
+
 function Footer(props){
-    return <h1>TechFolio: 2023</h1>;
+    return <div className="Footer">
+      <h1>TechFolio: 2023</h1>;
+      </div>
   } 
   
   export default Footer;
