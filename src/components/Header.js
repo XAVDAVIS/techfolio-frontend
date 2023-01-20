@@ -1,7 +1,4 @@
 import { Link } from "react-router-dom";
-import { logOut } from "../firebase";
-
-
 function Header(props){
   return (
     <nav>
@@ -12,27 +9,10 @@ function Header(props){
       <Link to='/explore' className="link">
         <li>Showcase Hub</li>
       </Link>
-      {props.user ? 
-      <div>
-        <li>
-          <button onClick={logOut}>Logout</button>
-        </li>
-         <Link exact to='/portfolio/new' className="link">
-         <li>New Portfolio</li>
-       </Link>
-       <Link to='/portfolio/:id' className="link">
-         <li>My Portfolio</li>
-       </Link>
-       <Link to='/portfolio/:id/edit' className="link">
-         <li>Edit Portfolio</li>
-       </Link>
-       </div>
-       : (
-        <Link to='/login' className="link">
+      <Link to='/login'>
         <li>Log in</li>
       </Link>
-      )}
-      <Link to='/registration' className="link">
+      <Link to='/registration'>
         <li>Sign up</li>
       </Link>
       </ul>

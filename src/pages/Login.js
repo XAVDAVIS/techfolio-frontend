@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { logIn, } from "../firebase";
+import { logIn, logOut } from "../firebase";
 
  function Login (props) {
     const [email, setEmail] = useState('');
@@ -35,6 +35,8 @@ import { logIn, } from "../firebase";
             <button className="link-btn" 
               onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.
             </button>
+            <button onClick={logIn}>Google login</button>
+            <button onClick={logOut}>Logout</button>
         </div>
     );
 }

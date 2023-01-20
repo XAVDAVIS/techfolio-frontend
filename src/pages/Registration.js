@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 function Registration (props) {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
