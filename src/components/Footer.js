@@ -2,7 +2,7 @@
 
 function Footer(props){
     return <div className="Footer">
-      <h1>TechFolio: 2023</h1>;
+      <h1 className="link">TechFolio: 2023</h1>
       </div>
   } 
   

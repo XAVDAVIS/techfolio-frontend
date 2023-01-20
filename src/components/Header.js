@@ -1,28 +1,41 @@
 import { Link } from "react-router-dom";
+import { logOut } from "../firebase";
+
+
 function Header(props){
   return (
     <nav>
-      <Link to='/'>
+      <ul>
+      <Link to='/' className="link">
         <li>Home</li>
       </Link>
-      <Link to='/explore'>
+      <Link to='/explore' className="link">
         <li>Showcase Hub</li>
       </Link>
-      <Link to='/login'>
-        <li>Log in</li>
+      {props.user ? 
+      <div>
+        <li>
+          <button onClick={logOut}>Logout</button>
+        </li>
+         <Link exact to='/portfolio/new' className="link">
+         <li>New Portfolio</li>
+       </Link>
+       <Link to='/portfolio/:id' className="link">
+         <li>My Portfolio</li>
+       </Link>
+       <Link to='/portfolio/:id/edit' className="link">
+         <li>Edit Portfolio</li>
+       </Link>
+       </div>
+       : (
+        <Link to='/login' className="link">
+        <li>log in</li>
       </Link>
-      <Link to='/registration'>
+      )}
+      <Link to='/registration' className="link">
         <li>Sign up</li>
       </Link>
-      <Link exact to='/portfolio/new'>
-        <li>New Portfolio</li>
-      </Link>
-      <Link to='/portfolio/:id'>
-        <li>My Portfolio</li>
-      </Link>
-      <Link to='/portfolio/:id/edit'>
-        <li>Edit Portfolio</li>
-      </Link>
+      </ul>
     </nav>
   )
 } 
