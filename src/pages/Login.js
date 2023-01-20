@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { logIn, logOut } from "../firebase";
 
  function Login (props) {
     const [email, setEmail] = useState('');
@@ -30,6 +31,7 @@ import React, { useState } from "react";
                   name="password" />
                 <button type="submit">Log In</button>
             </form>
+            <button onClick={logIn}>Google login</button>
             <button className="link-btn" 
               onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.
             </button>

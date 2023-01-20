@@ -1,21 +1,79 @@
-import { Route, Routes } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Index from "../pages/Index";
 import Explore from "../pages/Explore";
-import { useEffect, useState } from "react";
+import Login from "../pages/Login";
+import Registration from "../pages/Registration";
+import New from "../pages/New";
+import Show from "../pages/Show";
+import Edit from "../pages/Edit";
 
-function Main(props) {
-	//Creating state for portfolio
-	const [portfolio, setPortfolio] = useState(null);
-	const url = "http://localhost:4000/portfolio/";
+function Main(props){
+  const [portfolio, setPortfolio] = useState(null)
+  const PORTFOLIO_URL = 'http://localhost:4000/portfolio/'
+  const USER_URL = 'http://localhost:4000/user/'
+  
+  //GET
+  const getUser = async () => {
+    const response = await fetch(USER_URL);
+    const data = await response.json();
+    props.setUser(data);
+  };
+  const getPortfolio = async () => {
+    const response = await fetch(PORTFOLIO_URL);
+    const data = await response.json();
+    setPortfolio(data);
+  };
 
-	const getPortfolio = async () => {
-		const response = await fetch(url);
-		const data = await response.json();
-		setPortfolio(data);
-	};
+  //CREATE
+  const createUser = async (user) => { //user param will be an object of key:value pairs
+    const token = await props.user.getIdToken();
+    await fetch(USER_URL, {
+      method: 'POST',
+      headers: {'Content-type': 'Application/json',
+      Authorization: "Bearer " + token,},
+      //set req body
+      body: JSON.stringify(user),
+    })
+    getUser()
+  }
+  const createPortfolio = async (portfolio) => { //portfolio param will be an object of key:value pairs
+    await fetch(PORTFOLIO_URL, {
+      method: 'POST',
+      headers: {'Content-type': 'Application/json'},
+      //set req body
+      body: JSON.stringify(portfolio),
+    })
+    getPortfolio()
+  }
 
-	useEffect(() => {
-		getPortfolio();
-	}, []);
+  //UPDATE
+  const updateUser = async (id, updatedUser) => {
+    await fetch(USER_URL + id, {
+      method: 'PUT',
+      headers: {'Content-type':'Application/json'},
+      body: JSON.stringify(updatedUser)
+    })
+    getUser()
+  }
+  const updatePortfolio = async (id, updatedPortfolio) => {
+    await fetch(PORTFOLIO_URL + id, {
+      method: 'PUT',
+      headers: {'Content-type':'Application/json'},
+      body: JSON.stringify(updatedPortfolio)
+    })
+    getPortfolio()
+  }
+
+  //DELETE
+  const deleteUser = async (id) => {
+    await fetch(USER_URL + id, {method:'DELETE'})
+    getUser()
+  } 
+  const deletePortfolio = async (id) => {
+    await fetch(PORTFOLIO_URL + id, {method:'DELETE'})
+    getPortfolio()
+  } 
 
   useEffect(() => {
     getUser()
@@ -23,6 +81,7 @@ function Main(props) {
   }, []);
 
   return (
+    <main>
     <Routes>
       <Route 
         path='/'
@@ -53,7 +112,8 @@ function Main(props) {
         element={<Edit />}
       />
     </Routes>
+    </main>
   )
 } 
-
+ 
 export default Main;
