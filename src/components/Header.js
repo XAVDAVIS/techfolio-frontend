@@ -2,11 +2,10 @@ import { Link } from "react-router-dom";
 function Header(props){
   return (
     <nav>
-      <ul>
-      <Link to='/' className="link">
+      <Link to='/'>
         <li>Home</li>
       </Link>
-      <Link to='/explore' className="link">
+      <Link to='/explore'>
         <li>Showcase Hub</li>
       </Link>
       <Link to='/login'>
@@ -15,7 +14,15 @@ function Header(props){
       <Link to='/registration'>
         <li>Sign up</li>
       </Link>
-      </ul>
+      <Link exact to='/portfolio/new'>
+        <li>New Portfolio</li>
+      </Link>
+      <Link to='/portfolio/:id'>
+        <li>My Portfolio</li>
+      </Link>
+      <Link to='/portfolio/:id/edit'>
+        <li>Edit Portfolio</li>
+      </Link>
     </nav>
   )
 } 

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import "./App.css";
->>>>>>> 07bfac8 (.)
+import "./App.scss";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
